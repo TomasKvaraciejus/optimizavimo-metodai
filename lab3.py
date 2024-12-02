@@ -1,4 +1,4 @@
-# Optimizacijos Metodai Lab2
+# Optimizacijos Metodai Lab3
 # Tomas Kvaraciejus, 2110588
 
 import math
@@ -20,7 +20,8 @@ class points:
         self.y -= y
         self.z -= z
 
-precision = 10 ** -4
+precision = 10 ** -7
+precision_bauda = 10 ** -4
 def unwrap_to_points(xyz):
     return points(xyz[0], xyz[1], xyz[2])
 def func(p: points):
@@ -81,7 +82,7 @@ def geriausia_bauda(p, bauda, bauda_mult):
     f_new = func(p)
     i = 0
 
-    while precision < abs(f_old - f_new):
+    while precision_bauda < abs(f_old - f_new):
         curr_func = lambda xyz: (func_from_arr(xyz) + bauda *
                                  ((min(0, xyz[0]) ** 2 + min(0, xyz[1]) ** 2 + min(0, xyz[2]) ** 2) + h_func(xyz) ** 2))
         p = greic_nusileidimas(curr_func, p)
